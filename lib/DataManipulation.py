@@ -7,4 +7,4 @@ def join_orders_customers(orders_df, customers_df):
     return orders_df.join(customers_df, "customer_id")
 
 def count_orders_state(joined_df):
-    return joined_df.groupBy('order_state').count()
+    return joined_df.groupBy('state').count()

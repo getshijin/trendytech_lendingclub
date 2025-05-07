@@ -12,9 +12,8 @@ def get_app_config(env):
 # loading the pyspark configs and creating a spark conf object
 def get_pyspark_config(env):
     config = configparser.ConfigParser()
-    config.read("configs/pyspark.conf")
+    config.read("configs/spark.conf")
     pyspark_conf = SparkConf()
     for (key, val) in config.items(env):
         pyspark_conf.set(key, val)
     return pyspark_conf
-    

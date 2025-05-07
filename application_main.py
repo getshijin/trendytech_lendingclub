@@ -2,6 +2,8 @@ import sys
 from lib import DataManipulation, DataReader, Utils
 from pyspark.sql.functions import *
 
+
+
 if __name__ == '__main__':
 
     if len(sys.argv) < 2:
@@ -14,6 +16,9 @@ if __name__ == '__main__':
     print("Creating Spark Session")
 
     spark = Utils.get_spark_session(job_run_env)
+    spark.sparkContext.setLogLevel("WARN")
+    spark.sparkContext.setLogLevel("ERROR")
+
 
     print("Created Spark Session")
 
@@ -28,5 +33,5 @@ if __name__ == '__main__':
     aggregated_results = DataManipulation.count_orders_state(joined_df)
 
     aggregated_results.show()
-    
+    spark.stop()
     print("end of main")
